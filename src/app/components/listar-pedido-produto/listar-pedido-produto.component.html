@@ -1,0 +1,69 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="base_header">
+    <!-- botao voltar -->
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <!-- <ion-icon name="arrow-back-outline"></ion-icon> -->
+        <ion-icon name="arrow-down-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-title class="ion-text-center"> -->
+    <ion-title>
+      Produtos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <ion-item-group *ngFor="let item of produto; index as i"> -->
+  <!-- <ion-item *ngIf="item.idPedido == (varPedidoSelecionado)"> -->
+  <ion-item-group>
+    <ion-item>
+      <ion-label>
+        <h2><th>{{ produto.mercados.nome }}</th></h2>
+        <!-- <h3>
+                <th>De: 12.30</th>
+              </h3> -->
+        <h3>
+          Frete: {{ nomeFrete }}
+        </h3>
+
+        <h3>
+          Forma de pagamento: {{ produto.formaPagamento }}
+        </h3>
+        <h3 *ngIf="enderecoEnviar != false" >
+          Entrega: {{enderecoEnviar.bairro}}, {{enderecoEnviar.rua}}, Nº {{enderecoEnviar.numero}}
+        </h3>
+      </ion-label>
+      <ion-badge slot="end" color="tertiary">{{ produto.statusPedido.nomeStatusPedido }}</ion-badge>
+    </ion-item>
+  </ion-item-group>
+  <!-- fim produto -->
+
+  <ion-list>
+    <ion-item-group *ngFor="let item of produto.pedidoProdutos; index as i">
+      <ion-item>
+        <ion-label>
+          <h2><th>{{ item.nomeProduto }} {{ item.marcaProduto }}</th></h2>
+          <h3>
+            Quantidade:  {{ item.qtdProduto }}
+          </h3>
+          <h3>
+            Valor unitário: {{ item.valorUni | currency:'BRL' }}
+          </h3>
+        </ion-label>
+      </ion-item>
+    </ion-item-group>
+    <!-- fim produto -->
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <!-- chama modal no ts -->
+  <ion-toolbar color="light">
+    <!-- fim icone para cima -->
+    <ion-title>Total: {{ totalProdutos() | currency:'BRL' }}</ion-title>
+  </ion-toolbar>
+</ion-footer> 

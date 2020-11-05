@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="base_header">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+     <!--botao de carrinho-->
+     <ion-buttons slot="end">
+      <ion-button (click)="mensagemListaCompra()">
+        <ion-icon name="save-outline" style="zoom:1.5;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Meu Carrinho</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- inicio produto-->
+  <ion-item-sliding *ngFor="let p of cart" id="item100">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src={{p.imgProduto}}>
+      </ion-thumbnail>
+
+      <ion-label>
+        <h2>{{ p.nomeProduto }}</h2>
+        <p>{{ p.marca.nomeMarca }}</p>
+        <ion-note slot="end" color="text">{{ p.amount * p.preco | currency:'BRL' }}</ion-note>
+      </ion-label>
+      <!--botões de soma-->
+      <ion-buttons color="icon" slot="end">
+        <ion-button color="icon" (click)="decreaseCartItem(p)">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+        <ion-button disabled="true">
+          <th>{{ p.amount }}</th>
+        </ion-button>
+        <ion-button color="icon" (click)="increaseCartItem(p)">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <!-- fim botoes de soma -->
+    </ion-item>
+    <!--Retirar produto-->
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="removeCartItem(p)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+  <!-- fim produto -->
+
+</ion-content>
+
+<ion-footer>
+  <!-- chama modal no ts -->
+  <ion-toolbar (click)="showModalOne()">
+    <!-- icone para cima -->
+    <ion-icon slot="end" color="base_header" size="large" name="cart" class="carinho"></ion-icon>
+    
+    <!-- fim icone para cima -->
+    <ion-title>Subtotal:{{ getTotal() | currency:'BRL' }}</ion-title>
+  </ion-toolbar>
+</ion-footer>

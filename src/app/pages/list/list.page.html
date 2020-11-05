@@ -1,0 +1,76 @@
+<!-- cabeçalho pagina -->
+<ion-header>
+  <ion-toolbar color="base_header">
+    <!-- botao voltar -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <!--botao de menu-->
+    <ion-buttons slot="end">
+      <ion-menu-button ionDidOpen="true"></ion-menu-button>
+    </ion-buttons>
+    <!-- titulo -->
+    <ion-title>Nome Mercado</ion-title>
+    <ion-title size="small">Grãos</ion-title>
+  </ion-toolbar>
+  <!-- menu -->
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+  <!-- fim menu -->
+</ion-header>
+<!-- fim cabeçalho pagina -->
+
+<ion-content class="ion-padding">
+  <!-- lista de subprodutos -->
+
+  <!-- produto -->
+  <ion-item-group *ngFor="let item of subsubitem; index as i">
+    <ion-list>
+      <ion-item router-direction="forward" detail="true" (click)="onListaPress(item.idproduto)" routerLink="/product">
+        <ion-img slot="start" src="assets/icon/arrozc64.png"></ion-img>
+        <ion-label>
+          <h2>{{item.nameproduto}}</h2>
+        </ion-label>
+        <!--  <ion-icon slot="end" name="chevron-forward-outline"></ion-icon> -->
+      </ion-item>
+    </ion-list>
+  </ion-item-group>
+  <!-- fim produto -->
+
+<!-- -------------------------------------------------------------------------------------------------------- -->
+
+  <!--botao do carrinho-->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/carrinho">
+    <ion-fab-button color="icon">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <!-- fim botao carrinho -->
+
+</ion-content>
+
+<!-- ----------------------------------------------------------------------------------------------------- -->
+
+<!-- menu -->
+<ion-menu side="end" contentId="main-content" type="overlay">
+<!-- titulo -->
+  <ion-header>
+    <ion-toolbar color="base_header">
+      <ion-title>Categorias</ion-title>
+    </ion-toolbar>
+  </ion-header>
+<!-- corpo -->
+  <ion-content>
+
+    <ion-list>
+      <ion-menu-toggle autoHide="false" *ngFor="let categoria of subitem">
+        <ion-item (click)="onCategoriaPress(categoria.idcategoria)" [routerDirection]="root">
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label>{{ categoria.namecategoria }}</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+<!-- fim menu -->

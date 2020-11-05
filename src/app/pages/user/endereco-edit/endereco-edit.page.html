@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="base_header">
+    <!-- botao voltar -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <!-- botao de refresh -->
+    <ion-buttons (click)="enderecoNovo()" slot="end">
+      <ion-button>
+        <ion-icon name="add-outline" style="zoom:1.5;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Seus endereços</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- Checkboxes in a List -->
+  <ion-list>
+    <ion-radio-group value={{isCheck}}>
+
+      <ion-list-header>
+        <ion-label>Selecione o endereço para entrega</ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let endereco of varsessao.endereco" (click)="check(endereco.idEndereco)">
+        <ion-label>{{ endereco.bairro }}, {{ endereco.rua }}, Nº {{ endereco.numero }}</ion-label>
+        <ion-radio slot="start" color="tertiary" value={{endereco.idEndereco}}></ion-radio>
+        <!-- <ion-radio slot="start" color="tertiary" value={{endereco.principal}} [(ngModel)]="endereco.principal"></ion-radio> -->
+      </ion-item>
+
+    </ion-radio-group>
+  </ion-list>
+
+</ion-content>

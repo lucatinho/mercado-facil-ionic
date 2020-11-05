@@ -1,0 +1,78 @@
+<!-- cabeçalho pagina -->
+<ion-header>
+  <ion-toolbar color="base_header">
+    <!-- botao voltar -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+     <!--botao de carrinho-->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/carrinho">
+        <ion-icon name="cart-outline" style="zoom:1.2;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+    <!-- titulo -->
+    <ion-title>{{ nomeMercado }}</ion-title>
+    <ion-title size="small">{{ nomeSubCategoria }}</ion-title>
+  </ion-toolbar>
+  <!-- fim menu -->
+</ion-header>
+<!-- fim cabeçalho pagina -->
+
+<ion-content>
+
+  <ion-list>
+    <!-- produto -->
+    <ion-item-group *ngFor="let item of marca; index as i">
+      <ion-item *ngIf="item.subCategoria.idSubCategoria == (listaSelecionado) && item.ativo == true">
+        <ion-thumbnail slot="start">
+          <img src={{item.imgProduto}}>
+        </ion-thumbnail>
+
+        <ion-label>
+          <!-- <h2>{{ item.nomeProduto }}</h2> -->
+          <h2>{{ item.nomeProduto }} {{ item.marca.nomeMarca }}</h2>
+          <h3>
+            <th>De: 12.30</th>
+          </h3>
+          <h3>
+            <th>Por: {{item.preco | currency:'BRL' }}</th>
+          </h3>
+        </ion-label>
+
+        <!--botões de soma-->
+        <!-- <ion-buttons color="primary" slot="end">
+        <ion-button (click)="soma(-1)" color="icon">
+          <ion-icon name="remove-outline"></ion-icon>
+        </ion-button>
+        <ion-button disabled="true">
+          <th>{{varSoma}}</th>
+        </ion-button>
+        <ion-button (click)="soma(1)" color="icon">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+        <!-- fim botoes de soma -->
+
+        <!-- botao de add carrinho -->
+        <ion-button color="icon" (click)="addToCart(item)" inserirCarrinho slot="end" size="default">
+          <ion-icon name="cart-outline"></ion-icon>
+        </ion-button>
+        <!-- fim botao add carrinho -->
+
+      </ion-item>
+    </ion-item-group>
+    <!-- fim produto -->
+  </ion-list>
+
+  <!--botao do carrinho-->
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/carrinho">
+    <ion-fab-button color="icon">
+      <ion-icon name="cart-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+  <!-- fim botao carrinho -->
+
+</ion-content>

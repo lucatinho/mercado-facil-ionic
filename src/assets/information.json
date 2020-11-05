@@ -1,0 +1,94 @@
+{
+    "items": [
+        {
+            "name": "Arroz",
+            "children": [
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Prato Fino",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                    "price": "R$19.99"
+                }
+            ]
+        },
+        {
+            "name": "Feijão",
+            "children": [
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Prato Fino",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                    "price": "R$19.99"
+                }
+            ]
+        },
+        {
+            "name": "Grão de bico",
+            "children": [
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Prato Fino",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                    "price": "R$19.99"
+                }
+            ]
+        },
+        {
+            "name": "Milho",
+            "children": [
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Prato Fino",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                    "price": "R$19.99"
+                }
+            ]
+        },
+        {
+            "name": "Soja",
+            "children": [
+                {
+                    "name": "Tio Joao",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+                    "price": "R$25"
+                },
+                {
+                    "name": "Prato Fino",
+                    "information": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                    "price": "R$19.99"
+                }
+            ]
+        }
+    ]
+}

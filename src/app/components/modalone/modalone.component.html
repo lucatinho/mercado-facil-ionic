@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar color="base_header" (click)="close()">
+    <ion-title>Finalizando</ion-title>
+    <ion-icon slot="end" size="large" name="arrow-down-circle-outline" class="iconeseta"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-item>
+    <ion-label>Forma de Envio:</ion-label>
+    <ion-select [(ngModel)]="formaEnvio" (ionChange)="postFormaEnvio(formaEnvio);" ok-text="Confirmar" cancel-text="Cancelar" (click)="postFormaEnvio(value)">
+      <ion-select-option value="Entregar">Entregar - R$10,00</ion-select-option>
+      <ion-select-option value="Retirar no Mercado">Retirar no Mercado</ion-select-option>
+    </ion-select>
+  </ion-item> -->
+
+  <ion-item>
+    <ion-label>Forma de Envio:</ion-label>
+    <ion-select [(ngModel)]="formaEnvio" (ionChange)="postFormaEnvio(formaEnvio);" value="notifications" interface="action-sheet">
+      <ion-select-option value="Entrega">Entregar - {{ freteview | currency:'BRL' }}</ion-select-option>
+      <ion-select-option value="Retirada no mercardo" >Retirar no Mercado</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- só deve aparecer se forma de envio for entrega -->
+
+  <ion-item *ngIf="enderecoValidacao == true">
+    <ion-label>Endereço de entrega:</ion-label>
+    <ion-select [(ngModel)]="enderecoEntrega" (ionChange)="postEnderecoEntrega(enderecoEntrega);" value="notifications" interface="action-sheet">
+      <ion-select-option *ngFor="let endereco of enderecosCliente" value={{endereco.idEndereco}}>Bairro {{endereco.bairro}},Rua {{endereco.rua}},Nº {{endereco.numero}}</ion-select-option>
+      <!-- <ion-select-option value="Retirada no mercardo" >Retirar no Mercado</ion-select-option> -->
+    </ion-select>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label>Forma de Pagamento:</ion-label>
+    <ion-select [(ngModel)]="formaPagamenento" (ionChange)="postFormaPagamento(formaPagamenento);" value="notifications" interface="action-sheet">
+      <ion-select-option value="Dinheiro">Dinheiro</ion-select-option>
+      <ion-select-option value="Cartão Credito" >Cartão Credito</ion-select-option>
+      <ion-select-option value="Cartao Debito">Cartao Debito</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label></ion-label>
+  </ion-item-divider>
+ 
+  <ion-list>
+
+    <ion-text class="ion-text-center">
+      <ion-title size="small">Subtotal: {{ getSubTotal() | currency:'BRL'}}</ion-title>
+    </ion-text>
+
+    <br>
+
+    <ion-text class="ion-text-center">
+      <ion-title size="small">Frete: {{ frete | currency:'BRL'}}</ion-title>
+    </ion-text>
+
+    <p class="ion-text-center">Total:</p>
+    <ion-text color="base_header">
+      <h1 class="ion-text-center">{{ total() | currency:'BRL'}}</h1>
+    </ion-text>
+
+  </ion-list>
+  
+  <ion-button expand="block" color="base_header" (click)="checkout()"><th>Finalizar</th></ion-button>
+  <!-- <ion-button expand="block" color="base_header" (click)="test()"><th>Finalizar</th></ion-button> -->
+
+</ion-content>

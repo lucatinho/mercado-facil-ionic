@@ -1,0 +1,45 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="base_header">
+<!-- botao de refresh -->
+    <ion-buttons slot="end">
+      <ion-button  (click)="banco()">
+        <ion-icon name="refresh-circle-outline" style="zoom:1.5;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title class="ion-text-center">
+      Historico de Pedidos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <!-- inicio pedido -->
+    <ion-item *ngFor="let item of pedidos; index as i" (click)="postPedidoSelecionado(item)">
+      <ion-thumbnail slot="start">
+        <img src={{item.mercados.picture}}>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ item.mercados.nome}}</h2>
+        <p>{{ item.dataPedido | date:'dd/MM hh:mm'}}</p>
+        <!-- <p>
+          <th></th>
+        </p> -->
+      </ion-label>
+
+      <ion-buttons slot="end">
+        <ion-button>
+          <ion-icon name="information-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      
+      <!-- <ion-badge slot="end" color="warning">{{ item.statusPedido.nomeStatusPedido }}</ion-badge> -->
+    </ion-item>
+    <!-- fim pedido -->
+
+  </ion-list> 
+
+</ion-content>

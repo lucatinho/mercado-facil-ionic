@@ -1,0 +1,119 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="base_header">
+    <ion-title class="ion-text-center">
+      <h2>Mercado Fácil</h2>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!--Lista de Favoritos-->
+  <ion-list>
+    <!-- titulo -->
+    <ion-list-header>
+      <ion-text color="base_header">
+        <th>Favoritos</th>
+      </ion-text>
+    </ion-list-header>
+    <!-- fim titulo -->
+    <!-- <ion-item-group *ngIf="mercadoFavorito.contador != 1"> -->
+      <ion-list *ngIf="viewFavorito == false">
+
+        <ion-label>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;Selecione um mercado como favorito.</p>
+        </ion-label>
+
+      </ion-list>
+
+      
+      <ion-item-group *ngIf="viewFavorito == true">
+
+      </ion-item-group>
+      <ion-item-group *ngIf="viewFavorito == true">
+      <ion-item (click)="favoritoNavigate()">
+        <ion-thumbnail slot="start">
+          <img src={{mercadoFavorito.picture}}>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{mercadoFavorito.nomeMercado}}</h3>
+          <p>{{mercadoFavorito.observacao}}</p>
+        </ion-label>
+
+        <!--botão coração do favorito-->
+        <ion-buttons slot="end" (click)="deleteFavorito()">
+          <ion-button>
+            <ion-icon color="danger" name="heart"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <!-- fim lista favoritos -->
+
+  <!-- Lista de Diponiveis-->
+  <ion-list>
+    <!-- titulo -->
+    <ion-list-header>
+      <ion-text color="base_header">
+        <th>Disponiveis</th>
+      </ion-text>
+    </ion-list-header>
+    <!-- fim titulo -->
+    <ion-item-group *ngFor="let item of Mercados; index as i">
+      <ion-item *ngIf="item.situacao == true" (click)="onMercadoPress(item.url);postNomeMercado(item.nomeMercado);
+      postFreteMercado(item.freteMercado);postSubCategoriasMercado(item.subCategorias);postInfoMercado(item)" routerLink="/lista">
+        <ion-thumbnail slot="start">
+          <img src={{item.picture}}>
+          <!-- <img src="https://i.imgur.com/xZ2ZaRu.png"> -->
+          
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.nomeMercado}}</h3>
+          <p>{{item.observacao}}</p>
+          <p>Fecha ás {{item.horario}} horas.</p>
+        </ion-label>
+        <!--botão coração do favorito-->
+        <ion-buttons slot="end" (click)="postFavorito(item.idMercado)">
+          <ion-button>
+            <ion-icon name="heart-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+
+      </ion-item>
+    </ion-item-group>
+
+  </ion-list>
+  <!-- fim Lista de Diponiveis-->
+
+  <!-- Lista de Não Diponiveis-->
+  <ion-list>
+    <!-- titulo -->
+    <ion-list-header>
+      <ion-text color="base_header">
+        <th>Não Disponiveis</th>
+      </ion-text>
+    </ion-list-header>
+    <!-- fim titulo -->
+    <ion-item-group *ngFor="let item of Mercados; index as i">
+      <ion-item *ngIf="item.situacao == false">
+        <ion-thumbnail slot="start">
+          <img src={{item.picture}}>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{item.nomeMercado}}</h3>
+          <p>{{item.observacao}}</p>
+          <p>Fecha ás {{item.horario}} horas.</p>
+        </ion-label>
+         <!--botão coração do favorito-->
+         <ion-buttons slot="end" (click)="postFavorito(item.idMercado)">
+          <ion-button>
+            <ion-icon name="heart-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+  <!-- fim lista nao disponiveis -->
+
+</ion-content>

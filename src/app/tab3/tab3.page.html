@@ -1,0 +1,62 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="base_header">
+    <!-- botao de refresh -->
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="getListaMercado()">
+        <ion-icon name="refresh-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+
+    <ion-title class="ion-text-center">
+      Lista de Compras
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of listaProduto; index as i">
+      <ion-item (click)=postListaSelecionada(item)>
+
+        <ion-thumbnail slot="start">
+          <img src={{item.imgMercado}}>
+        </ion-thumbnail>
+
+        <ion-label>
+          <!--Usuario pode escolher o nome da lista-->
+          <h3>{{item.titulo}}</h3>
+          <p>{{item.nomeMercado}}</p>
+          <p>{{item.data | date:'dd/MM/yy'}}</p>
+          <!-- <p>{{item.totalCompra | currency:'BRL'}}</p> -->
+        </ion-label>
+        <!--botão coração do favorito-->
+        <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon color="danger" name="heart"></ion-icon> 
+          </ion-button>
+        </ion-buttons>
+
+      </ion-item>
+      <!--Retirar produto-->
+      <ion-item-options (click)="removeItemLista(item)" side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-list *ngIf="valideitor == true">
+
+    <!-- <ion-label>
+      <p>Você ainda não tem uma lista salva.</p>
+    </ion-label> -->
+    <ion-label>
+      <p>&nbsp;&nbsp;&nbsp;&nbsp;
+        No carrinho de compras aperte nesse ícone <ion-icon name="save-outline" style="zoom:1.5;">
+        </ion-icon> para adicionar uma lista</p>
+    </ion-label>
+   
+</ion-list>
+</ion-content>

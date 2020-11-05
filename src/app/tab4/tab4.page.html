@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="base_header">
+    <!-- botao de refresh -->
+    <ion-buttons slot="end">
+      <ion-button  (click)="sessaoCliente()">
+        <ion-icon name="refresh-circle-outline" style="zoom:1.5;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title >
+      Perfil
+    </ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item lines="none">
+    <ion-avatar slot="end">
+      <img src="assets/img/avatar.png">
+    </ion-avatar>
+    <ion-label>
+      <h2>{{ varsessao.nome }}</h2>
+      <!-- <h2>Nome do Usuario</h2> -->
+    </ion-label>
+  </ion-item>
+
+  <ion-item-divider color="cinza_fundo"></ion-item-divider>
+
+
+  <ion-item lines="none">
+    <ion-label>Email</ion-label>
+    <ion-note slot="end">{{ varsessao.email }}</ion-note>
+  </ion-item>
+
+  <ion-item lines="none" routerLink="/endereco-edit">
+    <ion-label>Endereço de entrega</ion-label>
+    <!-- <ion-note slot="end">{{ endereco.bairro }}, {{ endereco.rua }}, {{ endereco.numero }}</ion-note> -->
+    <ion-icon slot="end" name="create-outline"></ion-icon>
+  </ion-item>
+
+
+  <ion-item-divider color="cinza_fundo"></ion-item-divider>
+
+  <ion-item>
+    <ion-label>Data de Nascimento</ion-label>
+    <ion-datetime value="1990-04-03" placeholder="Select Date"></ion-datetime>
+  </ion-item>
+
+
+</ion-content>
+
+<ion-button expand="block" color="base_header" (click)="sairConta()">
+  <th>Sair da conta</th>
+</ion-button> 

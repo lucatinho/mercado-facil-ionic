@@ -1,0 +1,61 @@
+<ion-header [translucent]="false">
+  <ion-toolbar color="base_header">
+    <!-- botao voltar -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref=""></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Lista de compras 
+    </ion-title>
+    <ion-title size="small">{{ banco.titulo }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<!-- inicio produto-->
+<ion-item-sliding *ngFor="let item of banco.produtos" id="item100">
+  <ion-item>
+    <ion-thumbnail slot="start">
+      <img src={{item.imgProduto}}>
+    </ion-thumbnail>
+
+    <ion-label>
+      <h2>{{ item.nomeProduto }}</h2>
+      <p>{{ item.marca.nomeMarca }}</p>
+      <ion-note slot="end" color="text">{{ item.preco | currency:'BRL' }}</ion-note>
+      <!-- <ion-note slot="end" color="text">{{ item.amount * item.preco | currency:'BRL' }}</ion-note> -->
+    </ion-label>
+    <!--botões de soma-->
+    <ion-buttons color="icon" slot="end">
+      <!-- <ion-button color="icon" (click)="decreaseCartItem(p)">
+        <ion-icon name="remove-outline"></ion-icon>
+      </ion-button> -->
+      <ion-button disabled="true">
+        <th>Qtd: {{ item.amount }}</th>
+      </ion-button>
+      <!-- <ion-button color="icon" (click)="increaseCartItem(p)">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button> -->
+    </ion-buttons>
+    <!-- fim botoes de soma -->
+  </ion-item>
+  <!--Retirar produto-->
+  <!-- <ion-item-options side="end">
+    <ion-item-option color="danger" (click)="removeCartItem(p)">
+      <ion-icon slot="icon-only" name="trash"></ion-icon>
+    </ion-item-option>
+  </ion-item-options> -->
+</ion-item-sliding>
+<!-- fim produto -->
+
+</ion-content>
+
+<ion-footer>
+
+
+<ion-toolbar>
+  <!-- <ion-icon slot="end" color="base_header" size="large" name="arrow-up-circle-outline"></ion-icon> -->
+  <ion-title>Total:{{ banco.totalCompra | currency:'BRL' }}</ion-title>
+</ion-toolbar>
+
+</ion-footer>
